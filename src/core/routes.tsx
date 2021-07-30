@@ -4,6 +4,7 @@ import {
     Route,
 } from "react-router-dom";
 import HomePage from "../pages/HomePage";
+import MySentencesPage from "../pages/MySentencesPage";
 import NotFoundPage from "../pages/NotFoundPage";
 
 interface IRoute {
@@ -20,6 +21,16 @@ export default function Routes() {
                     exact: true,
                     path: "/",
                     component: HomePage
+                }
+            ]
+        },
+        {
+            layout: MySentencesPage,
+            subRoutes: [
+                {
+                    exact: true,
+                    path: "/my-sentences",
+                    component: MySentencesPage
                 }
             ]
         }

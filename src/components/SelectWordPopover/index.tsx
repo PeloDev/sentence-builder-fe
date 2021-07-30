@@ -59,7 +59,6 @@ export default function SelectWordPopover() {
         api
             .get('/api/get-words', { wordType: wordType })
             .then((result) => {
-                console.log(result);
                 setWords(result.data.words);
                 setSelectedWordType(result.data.wordType);
             })

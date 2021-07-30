@@ -1,10 +1,13 @@
-import React, { useContext, useState } from 'react';
-import { Box, Button, Center, Grid, GridItem, Text } from '@chakra-ui/react';
+import { useContext, useState } from 'react';
+import { Box, Button, Center, GridItem, Text } from '@chakra-ui/react';
 import Header from '../../components/Header';
 import { AppContext } from '../../core/app-context';
 import { Word } from '../../types';
+import { Link } from "react-router-dom";
 import SelectWordPopover from '../../components/SelectWordPopover';
 import api from '../../core/api';
+
+
 
 export default function HomePage() {
 
@@ -21,7 +24,7 @@ export default function HomePage() {
             <Header />
             <Box
                 mx={[4, 8, 12]}
-                pt={12}
+                pt={7}
             >
                 <Box color="whitesmoke" textAlign="center">
                     <Box mb={12}>
@@ -157,13 +160,28 @@ export default function HomePage() {
                 <Box>
                     {
                         message.status !== null &&
-                        <Text
-                            textAlign="center"
-                            color={message.status === 0 ? "red.700" : "blue.100"}
-                            fontWeight={600}
-                        >
-                            {message.value}
-                        </Text>
+                        <>
+                            <Text
+                                textAlign="center"
+                                color={message.status === 0 ? "red.700" : "blue.100"}
+                                fontWeight={600}
+                            >
+                                {message.value}
+                            </Text>
+                            {
+                                message.status !== 0 &&
+                                <Link to="/my-sentences">
+                                <Text
+                                    textAlign="center"
+                                    color={message.status === 0 ? "red.700" : "blue.100"}
+                                    fontWeight={600}
+                                    textDecor="underline"
+                                >
+                                    View
+                                </Text>
+                            </Link>
+                            }
+                        </>
                     }
                 </Box>
 
